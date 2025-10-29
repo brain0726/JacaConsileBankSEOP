@@ -1,11 +1,12 @@
-package banking_4;
+package banking_5;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.Scanner;
 
 
 //계좌정보를 표현한 클래스로 NormalAccount, HighCreditAccount의 부모클래스가 된다. 
-abstract public class Account implements ICustomDefine{
+abstract public class Account implements ICustomDefine ,Serializable{
 	//고객의 계좌정보는 계좌번호(String형), 이름(String형), 잔액(int형) 3가지만 저장 및 관리한다.
 	String number;
 	String name;

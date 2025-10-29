@@ -1,13 +1,22 @@
-package banking_4;
+package banking_5;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Scanner;
+
 
 //컨트롤 클래스로 프로그램의 전반적인 기능을 구현한다. 
 public class AccountManager {
 	Scanner scanner = new Scanner(System.in);
 	//멤버변수
 	private HashSet<Account> account;
+	private boolean file_check =true;
 	
 	//생성자
 	public AccountManager() {
@@ -106,6 +115,29 @@ public class AccountManager {
 		}
 	}
 	public void showAll() {
+		if(file_check) {
+			try {
+				ObjectInputStream in =
+					new ObjectInputStream(
+						new FileInputStream("src/banking_5/AccountInfo.obj")
+					);	
+				while(true) {
+					try {
+						account.add((Account)in.readObject());
+					}
+					catch(FileNotFoundException e) {
+						System.out.println("[예외]파일없음");
+					}
+					catch(Exception e) {
+						System.out.println("파일이 없음");
+						break;
+					}
+				}
+				
+			}catch(IOException e) {
+				System.out.println("파일이 없음");
+			}
+		}
 		System.out.println("***계좌정보출력***");
 		for(Account A: account) {
 			System.out.println("-------------");
@@ -125,9 +157,26 @@ public class AccountManager {
 			if(a.number.equals(number)) {
 				account.remove(a);
 				System.out.println("계좌가 삭제되었습니다.");
+				isFind=true;
 				break;
 			}
 		if(isFind==false)
 			System.out.println("일치하는 계좌가 없습니다.");
+	}
+	public void writeacc() {
+		try {
+			ObjectOutputStream out =
+					new ObjectOutputStream(
+						new FileOutputStream("src/banking_5/AccountInfo.obj")
+					);
+			for (Account a : account) 
+				out.writeObject(a);
+			out.close();
+		}
+		catch(IOException e) {
+			System.out.println("문자스트림 작업중 오류발생");
+			e.printStackTrace();
+		}
+		System.out.println("프로그램이 종료되었습니다.");
 	}
 }
