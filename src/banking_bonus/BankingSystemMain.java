@@ -6,7 +6,7 @@ import banking_bonus.AccountManager;
 import banking_bonus.MenuSelectException;
 
 //main 메서드를 포함한 클래스. 프로그램은 여기서 실행한다. 
-public class BankingSystemMain {
+public class BankingSystemMain implements ICustomDefine{
 
 	public static void showMenu() {// 메뉴출력
 		System.out.println("-----Menu------");
@@ -27,22 +27,22 @@ public class BankingSystemMain {
 				showMenu();
 				int choice=Integer.parseInt(scanner.nextLine());
 				switch(choice) {
-					case 1:
+					case MOVE:
 						accManager.makeAccount();
 						break;
-					case 2:
+					case ADD:
 						accManager.depositMoney();
 						break;
-					case 3:
+					case SUB:
 						accManager.withdrawMoney();
 						break;
-					case 4:
+					case SHOW:
 						accManager.showAll();
 						break;
-					case 5:
+					case DEL:
 						accManager.delacc();
 						break;
-					case 6:
+					case EXIT:
 						accManager.writeacc();
 						return ;
 					default:

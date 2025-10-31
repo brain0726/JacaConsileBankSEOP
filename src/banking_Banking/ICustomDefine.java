@@ -1,4 +1,4 @@
-package banking_bonus;
+package banking_Banking;
 
 /*
 interface로 생성한다. 
@@ -7,6 +7,9 @@ interface로 생성한다.
 이자율 : 고객의 신용등급을 A, B, C로 나눠서 7%, 4%, 2%로 지정한다.
  */
 public interface ICustomDefine {
-	int MOVE=1, ADD=2, SUB=3, SHOW=4, DEL=5,EXIT=6;
-	double credit_A=0.07,credit_B=0.04,credit_C=0.02;
+	void makeAccount();    // 계좌개설을 위한 함수
+	void depositMoney();    // 입    금
+	void withdrawMoney(); // 출    금
+	void showAccInfo();  // 전체계좌정보출력
+	void exitAcc(); // 프로그램 종료
 }

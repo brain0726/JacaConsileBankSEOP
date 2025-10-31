@@ -18,13 +18,13 @@ public class HighCreditAccount extends Account{
 	public void addMoney(int mon) {
 		switch(credit) {
 			case "A":
-				money=(int)(money+(money*interest/100)+(money*0.07)+mon);
+				money=(int)(money+(money*interest/100)+(money*credit_A)+mon);
 				break;
 			case "B":
-				money=(int)(money+(money*interest/100)+(money*0.04)+mon);
+				money=(int)(money+(money*interest/100)+(money*credit_B)+mon);
 				break;
 			case "C":
-				money=(int)(money+(money*interest/100)+(money*0.02)+mon);
+				money=(int)(money+(money*interest/100)+(money*credit_C)+mon);
 				break;
 			default :
 				System.out.println("A/B/C가 아닙니다");
