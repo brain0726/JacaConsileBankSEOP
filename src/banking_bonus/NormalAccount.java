@@ -18,10 +18,10 @@ public class NormalAccount extends Account {
 	}
 	
 	@Override
-		public void showAccInfo() {
-			// TODO Auto-generated method stub
-			super.showAccInfo();
-			System.out.println("기본이자 : "+interest+"%");
-		}
+	public void showAccInfo() {
+		// TODO Auto-generated method stub
+		super.showAccInfo();
+		System.out.println("기본이자 : "+interest+"%");
+	}
 	
 }
